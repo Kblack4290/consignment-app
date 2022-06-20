@@ -1,0 +1,22 @@
+<p>item-list works!</p>
+
+<table class="table" id='tab'>
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let it of itemsList;">
+            <td>{{ it.Id }}</td>
+            <td>{{ it.ItemName}}</td>
+            <td>{{ it.Quantity }}</td>
+            <td>{{ it.Category }}</td>
+            <td>{{ it.Description }}</td>
+        </tr>
+    </tbody>
+</table>
