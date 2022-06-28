@@ -5,34 +5,39 @@
             <div class="form-row">
                 <div class="col-6">
                     <label for="first-name"> First Name</label>
-                    <input name="fist-name" class="form-control" placeholder="First name" id="first-name" ngModel />
+                    <input name="fist-name" class="form-control" placeholder="First name" id="first-name"
+                        [(ngModel)]="formSettings.firstName" />
                 </div>
                 <!-- <div class="col-6"> -->
                 <label for="last-name"> Last Name</label>
-                <input class="form-control" name="last-name" placeholder="Last name" id="last-name" ngModel />
+                <input class="form-control" name="last-name" placeholder="Last name" id="last-name"
+                    [(ngModel)]="formSettings.lastName" />
                 <!-- </div> -->
             </div>
             <label for="email">Email address</label>
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                placeholder="Enter email" ngModel>
+                placeholder="Enter email" [(ngModel)]="formSettings.email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             <div class="form-check form-check-inline">
                 <div>Would like to sell or consign your item(s)</div>
-                <input class="form-check-input" type="radio" name="action" id="inlineRadio1" value="sell" ngModel>
+                <input class="form-check-input" type="radio" name="action" id="inlineRadio1" value="sell"
+                    [(ngModel)]="formSettings.action">
                 <label class="form-check-label" for="inlineRadio1">Sell</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="action" id="inlineRadio2" value="consign" ngModel />
+                <input class="form-check-input" type="radio" name="action" id="inlineRadio2" value="consign"
+                    [(ngModel)]="formSettings.action" />
                 <label class="form-check-label" for="inlineRadio2">Consign</label>
             </div>
             <label for="item-name"> Item Name</label>
-            <input placeholder="Item Name" name="item-name" class="form-control" id="item-name" ngModel />
+            <input placeholder="Item Name" name="item-name" class="form-control" id="item-name"
+                [(ngModel)]="formSettings.itemName" />
         </div>
 
 
         <div class="form-group">
             <label for="quantity">How many items do you want to consign?</label>
-            <select class="form-control" name="quantity" id="quantity" ngModel>
+            <select class="form-control" name="quantity" id="quantity" [(ngModel)]="formSettings.quantity">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -51,7 +56,7 @@
 
         <div class="form-group">
             <label for="category"> Please select your items category</label>
-            <select class="form-control" name="category" id="category" ngModel>
+            <select class="form-control" name="category" id="category" [(ngModel)]="formSettings.category">
                 <option>Jewelry</option>
                 <option>Toys</option>
                 <option>Clothing</option>
@@ -67,7 +72,8 @@
 
         <div class="form-group">
             <label for="description">Describe the item(s) you would like to consign or sell.</label>
-            <textarea class="form-control" id="description" name="description" rows="3" ngModel></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                [(ngModel)]="formSettings.description"></textarea>
         </div>
         <button class="btn btn-primary">Send</button>
     </form>
@@ -75,4 +81,4 @@
 
 </div>
 
-{{form.value | json}}
+{{originalFormSettings | json}}
