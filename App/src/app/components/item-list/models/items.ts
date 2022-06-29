@@ -1,7 +1,11 @@
 export class ItemsList {
   Id: string = '';
+  FirstName: string = '';
+  LastName: string = '';
+  Email: string = '';
+  Action: string = '';
   ItemName: string = '';
-  Quantity: number = 0;
+  Quantity: string = '';
   Category: string = '';
   Description: string = '';
 }

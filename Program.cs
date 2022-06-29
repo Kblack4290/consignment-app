@@ -6,16 +6,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("MyCorsImplementationPolicy", builder => builder.WithOrigins("*"));
+    options.AddPolicy("MyCorsImplementationPolicy", builder =>
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod());
 });
 builder.Services.Configure<ConsignmentFormDatabaseSettings>(
     builder.Configuration.GetSection("ConsignmentFormDatabase"));
+
 
 builder.Services.AddSingleton<ConsignmentService>();
 
 builder.Services.AddControllers()
 .AddJsonOptions(
     options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+
 
 // builder.Services.Configure<ConsignmentFormDatabaseSettings>(
 //     builder.Configuration.GetSection("ConsignmentFormDatabase"));
@@ -35,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("MyCorsImplementationPolicy");
+
+app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
 app.UseHttpsRedirection();
 

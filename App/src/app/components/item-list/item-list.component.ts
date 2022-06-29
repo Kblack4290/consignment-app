@@ -17,6 +17,7 @@ export class ItemListComponent implements OnInit {
       .get<ItemsList[]>('https://localhost:7219/api/Consignment')
       .subscribe((data) => {
         this.itemsList = data;
+        console.log(this.itemsList);
       });
   }
 }
