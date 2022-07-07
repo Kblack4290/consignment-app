@@ -108,3 +108,8 @@ C:\Users\keith\code\Projects\consignment-app\obj\Debug\net6.0\refint\Consignment
 C:\Users\keith\code\Projects\consignment-app\obj\Debug\net6.0\ConsignmentApp.pdb
 C:\Users\keith\code\Projects\consignment-app\obj\Debug\net6.0\ConsignmentApp.genruntimeconfig.cache
 C:\Users\keith\code\Projects\consignment-app\obj\Debug\net6.0\ref\ConsignmentApp.dll
+C:\Users\keith\code\Projects\consignment-app\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\keith\code\Projects\consignment-app\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\keith\code\Projects\consignment-app\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\keith\code\Projects\consignment-app\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\keith\code\Projects\consignment-app\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
