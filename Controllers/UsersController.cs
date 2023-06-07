@@ -3,11 +3,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ConsignmentApi.Models;
 using ConsignmentApi.Services;
+using Microsoft.AspNetCore.Cors;
+
+
 
 namespace ConsignmentApi.Controllers;
 
+// [Authorize]
 [Route("api/[controller]")]
 [ApiController]
+// [EnableCors("MyCorsImplementationPolicy")]
+
+
 
 public class UsersController : Controller
 {
@@ -34,4 +41,28 @@ public class UsersController : Controller
         return Json(user);
     }
 
+    [HttpPost]
+    public ActionResult<User> Create(User user)
+    {
+        service.Create(user);
+
+        return Json(user);
+    }
+
+    [Route("authenticate")]
+    [HttpPost]
+
+    public ActionResult Login([FromBody] User user)
+    {
+
+        var token = service.Authenticate(user.Email, user.Password);
+
+        if (token == null)
+            return Unauthorized();
+
+        return Ok(new { token, user });
+    }
+
 }
+
+
