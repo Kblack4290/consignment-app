@@ -1,10 +1,9 @@
 using System;
 using ConsignmentApi.Models;
 using ConsignmentApi.Services;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,11 +17,19 @@ builder.Services.AddCors(options =>
     .AllowAnyHeader()
     .AllowAnyMethod());
 });
+
 builder.Services.Configure<ConsignmentFormDatabaseSettings>(
     builder.Configuration.GetSection("ConsignmentFormDatabase"));
 
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.AddSingleton<ConsignmentService>();
+builder.Services.AddSingleton<IAuthenticationService>(provider =>
+{
+    var configuration = provider.GetService<IConfiguration>();
+    var secretKey = configuration.GetValue<string>("JWTSettings:Key");
+    return new AuthenticationService(provider.GetService<UserService>(), secretKey);
+});
 
 builder.Services.AddControllers()
 .AddJsonOptions(
